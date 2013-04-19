@@ -4,7 +4,32 @@
     <meta charset="utf-8">
     <title>Flat UI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script type="text/javascript">
+    document.onclick = changeElement;
+    function getStyle(obj, jsprop, cssprop) {
+        if (obj.currentStyle) {
+                return obj.currentStyle[jsprop];
 
+        } else if (window.getComputedStyle) {
+                return document.defaultView.getComputedStyle(obj, null).getPropertyValue(cssprop);
+
+        } else {
+                return null;
+        }
+}
+function changeElement() {
+        var obj = document.getElementById("div1");
+        alert(obj.style.backgroundColor);
+        alert(getStyle(obj, "backgroundColor", "background-color"));
+
+        obj.style.backgroundColor = "#ff0000";
+        alert(getStyle(obj, "backgroundColor", "background-color"));
+
+        alert(obj.style.backgroundColor);
+}
+    
+    </script>
     <!-- Loading Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -16,6 +41,8 @@
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
     <![endif]-->
+    
+
   </head>
   <body>
     <div class="container">
